@@ -26,9 +26,14 @@ Append to your `mix.exs deps`:
     {:regex_spec, "~> 0.20.0"}
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/regex_spec](https://hexdocs.pm/regex_spec).
+## Design
+
+This library uses [leex][leex] and [yecc][yecc] to compile your regular expression into a tree of capture groups and then into a Dialyzer type specification that matches.
+
+
+The docs can be found at [https://hexdocs.pm/regex_spec](https://hexdocs.pm/regex_spec).
 
 [1]: https://hexdocs.pm/elixir/typespecs.html
 [2]: https://hexdocs.pm/elixir/Regex.html
+[leex]: https://erlang.org/doc/man/leex.html
+[yecc]: https://erlang.org/doc/man/yecc.html

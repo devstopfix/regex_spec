@@ -4,7 +4,6 @@ defmodule RegexSpecTest do
   alias Regex.Spec.MaybePositiveInteger
 
   describe "Maybe positive integer" do
-
     test "with empty string is false" do
       refute MaybePositiveInteger.match?("")
     end
@@ -20,7 +19,5 @@ defmodule RegexSpecTest do
     test "with digits is true" do
       assert MaybePositiveInteger.match?("10")
     end
-
   end
-
 end

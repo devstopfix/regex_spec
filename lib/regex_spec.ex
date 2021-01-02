@@ -7,13 +7,11 @@ defmodule Regex.Spec do
   alias Regex.Spec.Compiler
 
   @doc false
-  defmacro __using__([regex: re]) do
-
+  defmacro __using__(regex: re) do
     {:sigil_r, _, [{:<<>>, _, [re_s]}, []]} = re
     type = %Regex{source: re_s} |> Compiler.compile() |> Code.string_to_quoted!()
 
     quote do
-
       @type t() :: unquote(type)
 
       @doc """
@@ -25,7 +23,5 @@ defmodule Regex.Spec do
         Regex.match?(unquote(re), s)
       end
     end
-
   end
-
 end

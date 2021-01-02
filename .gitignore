@@ -1,3 +1,6 @@
+# Compiler output of leex and yecc
+/src/*erl
+
 # The directory Mix will write compiled artifacts to.
 /_build/
 
@@ -13,7 +16,7 @@
 # Ignore .fetch files in case you like to edit your project deps locally.
 /.fetch
 
-# If the VM crashes, it generates a dump, let's ignore it too.
+# VM crashes
 erl_crash.dump
 
 # Also ignore archive artifacts (built via "mix archive.build").
@@ -21,7 +24,6 @@ erl_crash.dump
 
 # Ignore package tarball (built via "mix hex.build").
 regex_spec-*.tar
-
 
 # Temporary files for e.g. tests
 /tmp
