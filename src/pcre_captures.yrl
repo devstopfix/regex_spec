@@ -1,17 +1,23 @@
-Nonterminals list elems elem.
-Terminals '[' ']' ',' int atom.
-Rootsymbol list.
+Nonterminals 
+re captures capture.
 
-list -> '[' ']'       : [].
-list -> '[' elems ']' : '$2'.
+Terminals 
+'(' ')' '?'. 
+% int.
 
-elems -> elem           : ['$1'].
-elems -> elem ',' elems : ['$1'|'$3'].
+Rootsymbol 
+re.
 
-elem -> int  : extract_token('$1').
-elem -> atom : extract_token('$1').
-elem -> list : '$1'.
+captures -> capture : ['$1'].
+captures -> capture captures : ['$1' | '$2'].
+
+capture -> '(' ')' '?'   : #{ capture => [], optional => true}.
+capture -> '(' ')'       : #{ capture => []}.
+capture -> '(' captures ')' : #{ capture => '$2'}.
+
+re -> captures : '$1'.
+re -> '$empty' : [].
 
 Erlang code.
 
-extract_token({_Token, _Line, Value}) -> Value.
+% extract_token({_Token, _Line, Value}) -> Value.

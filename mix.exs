@@ -1,27 +1,37 @@
 defmodule RegexSpec.MixProject do
   use Mix.Project
 
-  def project do
-    [
+  def project,
+    do: [
       app: :regex_spec,
-      version: "0.20.363",
-      elixir: "~> 1.6",
+      deps: deps(),
+      docs: docs(),
+      elixir: "~> 1.7",
+      elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      version: "0.21.363"
     ]
-  end
 
-  # Run "mix help compile.app" to learn about applications.
-  def application do
-    [
+  def application,
+    do: [
       extra_applications: [:logger]
     ]
-  end
 
-  defp deps do
-    [
+  defp deps,
+    do: [
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
-      {:dialyxir, "~> 1.0", only: [:dev], runtime: false}
+      {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
+      {:ex_doc, "~> 0.22.0", only: [:dev], runtime: false}
     ]
-  end
+
+  defp docs,
+    do: [
+      main: "Regex.Spec",
+      extra: ["README.md"]
+    ]
+
+  # Compile verification paths during testing
+  # to allow Dialyzer to verify the generated specs
+  defp elixirc_paths(:test), do: ["lib", "test/specs", "test/verify"]
+  defp elixirc_paths(_), do: ["lib"]
 end
