@@ -4,12 +4,14 @@ defmodule RegexSpec.MixProject do
   def project,
     do: [
       app: :regex_spec,
-      deps: deps(),
-      docs: docs(),
+      version: "0.21.38",
+      description: "Generated type specifications for regualar expressions at compile time",
       elixir: "~> 1.10",
       elixirc_paths: elixirc_paths(Mix.env()),
-      start_permanent: Mix.env() == :prod,
-      version: "0.21.38"
+      deps: deps(),
+      docs: docs(),
+      package: package(),
+      start_permanent: Mix.env() == :prod
     ]
 
   def application,
@@ -28,6 +30,16 @@ defmodule RegexSpec.MixProject do
     do: [
       main: "Regex.Spec",
       extra: ["README.md"]
+    ]
+
+  defp package,
+    do: [
+      files: ["lib", "mix.exs", "README*", "LICENSE*"],
+      maintainers: ["J Every"],
+      licenses: ["MIT"],
+      links: %{
+        "GitHub" => "https://github.com/devstopfix/regex_spec"
+      }
     ]
 
   # Compile verification paths during testing

@@ -33,12 +33,13 @@ defmodule Regex.Spec.Compiler do
     |> tuple_spec()
   end
 
-  defp tuple_spec(captures), do:
-    captures
-    |> Enum.map(fn _ -> "String.t()" end)
-    |> Enum.intersperse(", ")
-    |> wrap_tuple()
-    |> to_string()
+  defp tuple_spec(captures),
+    do:
+      captures
+      |> Enum.map(fn _ -> "String.t()" end)
+      |> Enum.intersperse(", ")
+      |> wrap_tuple()
+      |> to_string()
 
   # Depth-first, pre-order walk of the tree to list of captures
   defp walk([]), do: []
