@@ -8,7 +8,7 @@ defmodule Regex.Spec.Compiler do
   end
 
   @doc """
-  Lex and parse a regex into a tree of captures.
+  Lex and parse a regex into a list of captures.
   """
   @spec parse_captures(String.t()) :: {:ok, list(tuple())} | {:error, term(), integer()}
   def parse_captures(re) do
